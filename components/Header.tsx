@@ -4,9 +4,9 @@ import Image from "next/image";
 
 const Header = () => {
   return(
-    <Container maxW="5xl" sx={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
+    <Container py={5} maxW="5xl" sx={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
       <Box sx={{display: "flex"}}>
-        <Image src="/skyscanner-logo.png" width="150" height="80"/>
+        <Image src="/skyscanner-logo.png" width="190" height="37"/>
       </Box>
       <Box sx={{display: "flex", alignItems:"center", justifyContent:"space-between", width:"40%"}}>
         <Link color="blue">Help</Link>
