@@ -15,7 +15,7 @@ const Banner = () => {
         />
 
       </Box>
-      <Container mt={20} maxW="5xl" sx={{bottom:"450px", position:"relative"}}>
+      <Container mt={15} maxW="5xl" sx={{bottom:"450px", position:"relative"}}>
         <Heading size="3xl" color="white" sx={{zIndex: 20,}}>Let the journey begin</Heading>
         <FlightForm/>
       </Container>
