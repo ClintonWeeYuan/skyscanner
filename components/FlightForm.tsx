@@ -49,7 +49,7 @@ const FlightForm = () => {
     // changeFlightData(res.data.data);
     console.log(res);
     router.push("/results")
-    alert(JSON.stringify(formData))
+    // alert(JSON.stringify(formData))
   };
 
   const [origin, setOrigin] = useState("");
