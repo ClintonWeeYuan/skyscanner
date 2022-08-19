@@ -6,6 +6,7 @@ import FlightBox from "../components/FlightBox"
 import Footer from "../components/Footer"
 import PriceForm from "../components/PriceForm";
 import {useState} from "react";
+import Head from "next/head";
 
 const Results: NextPage = () => {
   const flights = useFlightContext().value;
@@ -14,6 +15,11 @@ const Results: NextPage = () => {
   const listOfRandomNumbers = [1, 3, 2, 1, 2, 0, 1, 3, 2, 1, 2, 2, 0, 0, 3, 1, 2, 3, 0, 5, 1, 2, 2, 3, 3, 1]
   return (
     <>
+      <Head>
+        <title>Safe Sign Technologies</title>
+        <meta name="description" content="Safe Sign Technologies" />
+        <link rel="icon" href="/safesign.webp" />
+      </Head>
       <Box bg="gray.100" minHeight="100vh">
         <Header/>
         <Container maxW="5xl">
