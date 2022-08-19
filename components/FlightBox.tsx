@@ -79,11 +79,11 @@ const FlightBox: FC<Props> = ({flight, seatSelection, baggage, randomNumber}) =>
           <Text>£{flight.price.amount}</Text>
           <Button size="lg" colorScheme="twitter">Select</Button>
         </Flex>
-        <Flex flex="3" justify="center" align="center" direction="column" p={4}>
-          <Badge w="100%" p={2} fontSize="lg" variant="solid" colorScheme="green">True Price: £{price}</Badge>
+        <Flex flex="3" justify="center" align="center" direction="column" p={2}>
+          <Badge sx={{borderRadius:"7px"}} w="100%" py={2} fontSize="lg" variant="subtle" colorScheme="whatsapp"><Center>True Price: £{price}</Center></Badge>
 
 
-          <Box mt={2} sx={{display: "flex", alignItems: "center", justifyContent: "flex-start", width: "100%"}} as="ul">
+          <Box mt={2} ml={2} sx={{display: "flex", alignItems: "center", justifyContent: "flex-start", width: "100%"}} as="ul">
             {terms[randomNumber].icon}
             <Text ml={2} fontSize="xs">{terms[randomNumber].term}</Text>
           </Box>
