@@ -3,15 +3,52 @@ import {ArrowForwardIcon} from "@chakra-ui/icons"
 import {useState} from "react";
 // @ts-ignore
 import {DatePicker} from 'chakra-ui-date-input'
+import axios from "axios";
+import {useFlightContext} from "./FlightContext";
+import {useRouter} from "next/router"
+
+function formatDate (date: string){
+  let dateArray = date.split("/");
+  let temp = dateArray[0];
+  dateArray[0] = dateArray[2];
+  dateArray[2] = temp;
+  return dateArray.join("-");
+}
 
 const FlightForm = () => {
-  const handleSubmit = () => {
+  const changeFlightData = useFlightContext().setValue;
+  const router = useRouter();
+
+  const handleSubmit = async () => {
     const formData = {
       origin: origin,
       dest: dest,
       departDate: departDate,
       returnDate: returnDate
     }
+
+    const options = {
+      method: 'GET',
+      url: 'https://skyscanner50.p.rapidapi.com/api/v1/searchFlights',
+      params: {
+        origin: origin,
+        destination: dest,
+        date: departDate,
+        adults: '1',
+        currency: 'GBP',
+        countryCode: 'UK',
+        market: 'en-UK'
+      },
+      headers: {
+        'X-RapidAPI-Key': 'b5011876d8mshbaeda2aa60f5d06p1f5d31jsnb6c500b8054d',
+        'X-RapidAPI-Host': 'skyscanner50.p.rapidapi.com'
+      }
+    };
+
+    const res = await axios.request(options);
+    // changeFlightData(res.data.data);
+    console.log(res);
+    router.push("/results")
     alert(JSON.stringify(formData))
   };
 
@@ -52,7 +89,7 @@ const FlightForm = () => {
             id="depart-date"
             placeholder='Date picker placeholder'
             name='depart-date'
-            onChange={(date: string) => setDepartDate(date)}
+            onChange={(date: string) => setDepartDate(formatDate(date))}
           />
         </FormControl>
         <FormControl ml={2} >
@@ -61,14 +98,14 @@ const FlightForm = () => {
             id="return-date"
             placeholder='Date picker placeholder'
             name='return-date'
-            onChange={(date: string) => setReturnDate(date)}
+            onChange={(date: string) => setReturnDate(formatDate(date))}
           />
         </FormControl>
       </Box>
 
       {/*Submit Button*/}
       <Box mt={8} sx={{display: "flex", justifyContent: "flex-end"}}>
-        <Button onClick={handleSubmit} size="lg" colorScheme="green">SEARCH FLIGHTS <ArrowForwardIcon ml={2}/></Button>
+        <Button onClick={handleSubmit} size="lg" colorScheme="whatsapp">SEARCH FLIGHTS <ArrowForwardIcon ml={2}/></Button>
       </Box>
     </Box>
   )

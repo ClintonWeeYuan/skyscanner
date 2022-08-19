@@ -8,27 +8,27 @@ import {FaCarSide} from "react-icons/fa"
 const Banner = () => {
   return (
 
-    <Box>
+    <Box mt={10}>
       <Container maxW="5xl">
         <Box sx={{display: "flex"}}>
-          <Box py={2} bg="#0770e3" px={5} sx={{ borderTopLeftRadius:"5", borderTopRightRadius: "5", cursor:"pointer", "&:hover": {
-              bgColor:"#042759"
+          <Box py={2} bg="whatsapp.500" px={5} sx={{ borderTopLeftRadius:"5", borderTopRightRadius: "5", cursor:"pointer", "&:hover": {
+              bgColor:"whatsapp.600"
             }}} mr={2}>
             <Center>
               <Icon color="white" as={TbPlaneInflight}/>
               <Text color="white" ml={2}>Flights</Text>
             </Center>
           </Box>
-          <Box py={2} px={5} bg="#0770e3" sx={{borderTopLeftRadius:"5", borderTopRightRadius: "5", cursor:"pointer", "&:hover": {
-              bgColor:"#042759"
+          <Box py={2} px={5} bg="whatsapp.500" sx={{borderTopLeftRadius:"5", borderTopRightRadius: "5", cursor:"pointer", "&:hover": {
+              bgColor:"whatsapp.600"
             }}} mr={2}>
             <Center>
               <Icon color="white" as={RiHotelLine}/>
               <Text color="white" ml={2}>Hotels</Text>
             </Center>
           </Box>
-          <Box py={2} px={5} bg="#0770e3" sx={{borderTopLeftRadius:"5", borderTopRightRadius: "5", cursor:"pointer", "&:hover": {
-            bgColor:"#042759"
+          <Box py={2} px={5} bg="whatsapp.500" sx={{borderTopLeftRadius:"5", borderTopRightRadius: "5", cursor:"pointer", "&:hover": {
+          bgColor:"whatsapp.600"
             }}} mr={2}>
             <Center>
               <Icon color="white" as={FaCarSide}/>

@@ -6,13 +6,12 @@ const Header = () => {
   return(
     <Container py={5} maxW="5xl" sx={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
       <Box sx={{display: "flex"}}>
-        <Image src="/skyscanner-logo.png" width="190" height="37"/>
+        <Image src="/safesign.webp" width="190" height="37"/>
       </Box>
       <Box sx={{display: "flex", alignItems:"center", justifyContent:"space-between", width:"40%"}}>
-        <Link color="blue">Help</Link>
-        <Button size="sm" variant="outline">English (UK)  Malaysia RM MYR</Button>
-        <Button colorScheme="twitter" size="lg" variant="outline">Log In</Button>
-
+        <Link color="whatsapp.500">Help</Link>
+        <Button size="sm" variant="outline">English (UK)  United Kingdom £ GBP</Button>
+        <Button colorScheme="whatsapp" size="lg" variant="outline">Log In</Button>
       </Box>
     </Container>
   )
