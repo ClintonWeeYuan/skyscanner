@@ -9,7 +9,7 @@ const Banner = () => {
   return (
 
     <Box mt={10}>
-      <Container maxW="5xl">
+      <Container maxW="5xl" >
         <Box sx={{display: "flex"}}>
           <Box py={2} bg="whatsapp.500" px={5} sx={{ borderTopLeftRadius:"5", borderTopRightRadius: "5", cursor:"pointer", "&:hover": {
               bgColor:"whatsapp.600"

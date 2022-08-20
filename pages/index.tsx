@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css'
 import Header from "../components/Header"
 import Banner from "../components/Banner"
 import {useState} from "react"
+import Footer from "../components/Footer"
 
 const Home: NextPage = () => {
 
@@ -17,6 +18,7 @@ const Home: NextPage = () => {
       </Head>
       <Header/>
       <Banner/>
+      <Footer/>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import {createContext, ReactNode, FC, useState, useContext} from "react";
 import {data} from "../DataFormat";
 
+
 export interface FlightState {
     value: any,
     setValue:(value: any) =>void,
@@ -29,8 +30,8 @@ const FlightContextProvider : FC<Props> = ({children}) => {
     }
 
     const initialState : FlightState = {
-        value: data.data.data,
-        // value: value,
+        // value: data.data.data,
+        value: value,
         setValue:handleValue
     }
 

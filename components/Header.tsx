@@ -1,11 +1,12 @@
 import {Box, Container, Button, Text, Link} from "@chakra-ui/react"
 import Image from "next/image";
-
+import {useRouter} from "next/router"
 
 const Header = () => {
+  const router = useRouter();
   return(
     <Container py={5} maxW="5xl" sx={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
-      <Box sx={{display: "flex"}}>
+      <Box sx={{display: "flex" ,cursor: "pointer"}} onClick={() => router.push("/")}>
         <Image src="/safesign.webp" width="190" height="37"/>
       </Box>
       <Box sx={{display: "flex", alignItems:"center", justifyContent:"space-between", width:"40%"}}>

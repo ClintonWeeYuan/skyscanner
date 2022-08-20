@@ -1,4 +1,4 @@
-import {Box, Button, FormControl, FormLabel, Input, Radio, RadioGroup, Stack, Text} from "@chakra-ui/react"
+import {Box, Button, FormControl, FormLabel, Input, Radio, RadioGroup, Stack, Text, Spinner} from "@chakra-ui/react"
 import {ArrowForwardIcon} from "@chakra-ui/icons"
 import {useState} from "react";
 // @ts-ignore
@@ -6,6 +6,7 @@ import {DatePicker} from 'chakra-ui-date-input'
 import axios from "axios";
 import {useFlightContext} from "./FlightContext";
 import {useRouter} from "next/router"
+
 
 function formatDate (date: string){
   let dateArray = date.split("/");
@@ -16,6 +17,7 @@ function formatDate (date: string){
 }
 
 const FlightForm = () => {
+
   const changeFlightData = useFlightContext().setValue;
   const router = useRouter();
 
@@ -26,36 +28,31 @@ const FlightForm = () => {
       departDate: departDate,
       returnDate: returnDate
     }
-
-    const options = {
-      method: 'GET',
-      url: 'https://skyscanner50.p.rapidapi.com/api/v1/searchFlights',
-      params: {
+    try{
+      setIsLoading(true);
+      const res = await axios.post("/api/search", {
         origin: origin,
-        destination: dest,
-        date: departDate,
-        adults: '1',
-        currency: 'GBP',
-        countryCode: 'UK',
-        market: 'en-UK'
-      },
-      headers: {
-        'X-RapidAPI-Key': 'b5011876d8mshbaeda2aa60f5d06p1f5d31jsnb6c500b8054d',
-        'X-RapidAPI-Host': 'skyscanner50.p.rapidapi.com'
-      }
-    };
+        dest: dest,
+        date: departDate
+      })
+      changeFlightData(res.data.splice(0, 20));
+      console.log(res);
+      setIsLoading(false);
+      router.push("/results")
+      // alert(JSON.stringify(formData))
+    } catch(e){
+      console.log(e);
+      setIsLoading(false);
+    }
 
-    const res = await axios.request(options);
-    // changeFlightData(res.data.data);
-    console.log(res);
-    router.push("/results")
-    // alert(JSON.stringify(formData))
+
   };
 
   const [origin, setOrigin] = useState("");
   const [dest, setDest] = useState("");
   const [departDate, setDepartDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <Box bg="#02122c" p={4} mt={6} sx={{borderRadius: 5}}>
@@ -105,7 +102,9 @@ const FlightForm = () => {
 
       {/*Submit Button*/}
       <Box mt={8} sx={{display: "flex", justifyContent: "flex-end"}}>
-        <Button onClick={handleSubmit} size="lg" colorScheme="whatsapp">SEARCH FLIGHTS <ArrowForwardIcon ml={2}/></Button>
+        <Button sx={{width:"200px"}} onClick={handleSubmit} size="lg" colorScheme="whatsapp">
+          {isLoading ? <Spinner/> : (<><Text>SEARCH FLIGHTS</Text> <ArrowForwardIcon/></>)}
+        </Button>
       </Box>
     </Box>
   )
